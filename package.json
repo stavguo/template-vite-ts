@@ -14,15 +14,27 @@
     },
     "homepage": "https://github.com/phaserjs/template-vite-ts#readme",
     "scripts": {
+        "preinstall": "npx only-allow pnpm",
         "dev": "vite --config vite/config.dev.mjs",
-        "build": "vite build --config vite/config.prod.mjs"
+        "build": "vite build --config vite/config.prod.mjs",
+        "lint": "eslint src vite eslint.config.mjs",
+        "lint-and-fix": "eslint src vite eslint.config.mjs --fix",
+        "deploy": "touch dist/.nojekyll && gh-pages -t -d dist -m \"Build for $(git log -n1 --pretty=format:\"%h %s\") [skip ci]\""
     },
     "devDependencies": {
+        "@eslint/js": "^9.6.0",
+        "@stylistic/eslint-plugin": "^2.3.0",
+        "eslint": "9.x",
+        "eslint-plugin-simple-import-sort": "^12.1.1",
+        "gh-pages": "^6.1.1",
+        "globals": "^15.8.0",
         "terser": "^5.31.0",
         "typescript": "^5.4.5",
+        "typescript-eslint": "^7.15.0",
         "vite": "^5.3.1"
     },
     "dependencies": {
         "phaser": "^3.80.1"
-    }
+    },
+    "packageManager": "pnpm@9.4.0+sha512.f549b8a52c9d2b8536762f99c0722205efc5af913e77835dbccc3b0b0b2ca9e7dc8022b78062c17291c48e88749c70ce88eb5a74f1fa8c4bf5e18bb46c8bd83a"
 }
